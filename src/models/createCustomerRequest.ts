@@ -25,7 +25,7 @@ export interface CreateCustomerRequest {
   /** Person type. Can be either 'individual' or 'company' */
   type: string;
   /** The customer's address */
-  address: CreateAddressRequest;
+  address?: CreateAddressRequest;
   /** Metadata */
   metadata: Record<string, string>;
   phones: CreatePhonesRequest;
@@ -42,7 +42,7 @@ export const createCustomerRequestSchema: Schema<CreateCustomerRequest> = object
     email: ['email', string()],
     document: ['document', string()],
     type: ['type', string()],
-    address: ['address', lazy(() => createAddressRequestSchema)],
+    address: ['address', lazy(() => optional(createAddressRequestSchema))],
     metadata: ['metadata', dict(string())],
     phones: ['phones', lazy(() => createPhonesRequestSchema)],
     code: ['code', string()],
