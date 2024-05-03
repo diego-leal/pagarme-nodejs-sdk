@@ -11,8 +11,14 @@ export interface Configuration {
   timeout: number;
   serviceRefererName: string;
   environment: Environment;
-  basicAuthUserName: string;
-  basicAuthPassword: string;
+  /** @deprecated use basicAuthCredentials field instead */
+  basicAuthUserName?: string;
+  /** @deprecated use basicAuthCredentials field instead */
+  basicAuthPassword?: string;
+  basicAuthCredentials?: {
+    username: string;
+    password: string;
+  };
   httpClientOptions?: Partial<HttpClientOptions>;
   unstable_httpClientOptions?: any;
 }
