@@ -148,7 +148,7 @@ export class SubscriptionsController extends BaseController {
       subscriptionId: [subscriptionId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycles`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getPeriodResponseSchema, requestOptions);
@@ -174,7 +174,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateSubscriptionCardRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/card`;
     req.authenticate([{ httpBasic: true }]);
@@ -204,7 +204,7 @@ export class SubscriptionsController extends BaseController {
       usageId: [usageId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}/usages/${mapped.usageId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getUsageResponseSchema, requestOptions);
@@ -230,7 +230,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, createDiscountRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/discounts`;
     req.authenticate([{ httpBasic: true }]);
@@ -257,7 +257,7 @@ export class SubscriptionsController extends BaseController {
       itemId: [itemId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}/usages`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getUsageResponseSchema, requestOptions);
@@ -282,7 +282,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateCurrentCycleStatusRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycle-status`;
     req.authenticate([{ httpBasic: true }]);
@@ -309,7 +309,7 @@ export class SubscriptionsController extends BaseController {
       discountId: [discountId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/discounts/${mapped.discountId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getDiscountResponseSchema, requestOptions);
@@ -387,7 +387,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateSubscriptionPaymentMethodRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/payment-method`;
     req.authenticate([{ httpBasic: true }]);
@@ -499,7 +499,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, optional(createCancelSubscriptionRequestSchema)],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}`;
     req.authenticate([{ httpBasic: true }]);
@@ -526,7 +526,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, createIncrementRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/increments`;
     req.authenticate([{ httpBasic: true }]);
@@ -556,7 +556,7 @@ export class SubscriptionsController extends BaseController {
       body: [body, createUsageRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.body);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}/usages`;
     req.authenticate([{ httpBasic: true }]);
@@ -600,7 +600,7 @@ export class SubscriptionsController extends BaseController {
       body: [body, createSubscriptionRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.body);
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionResponseSchema, requestOptions);
@@ -645,7 +645,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateSubscriptionAffiliationIdRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/gateway-affiliation-id`;
     req.authenticate([{ httpBasic: true }]);
@@ -672,7 +672,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateMetadataRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/Subscriptions/${mapped.subscriptionId}/metadata`;
     req.authenticate([{ httpBasic: true }]);
@@ -699,7 +699,7 @@ export class SubscriptionsController extends BaseController {
       incrementId: [incrementId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/increments/${mapped.incrementId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getIncrementResponseSchema, requestOptions);
@@ -776,7 +776,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateSubscriptionBillingDateRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/billing-date`;
     req.authenticate([{ httpBasic: true }]);
@@ -803,7 +803,7 @@ export class SubscriptionsController extends BaseController {
       subscriptionItemId: [subscriptionItemId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.subscriptionItemId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getSubscriptionItemResponseSchema, requestOptions);
@@ -854,7 +854,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateSubscriptionDueDaysRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/boleto-due-days`;
     req.authenticate([{ httpBasic: true }]);
@@ -882,7 +882,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateSubscriptionStartAtRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/start-at`;
     req.authenticate([{ httpBasic: true }]);
@@ -912,7 +912,7 @@ export class SubscriptionsController extends BaseController {
       body: [body, updateSubscriptionItemRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.body);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items/${mapped.itemId}`;
     req.authenticate([{ httpBasic: true }]);
@@ -939,7 +939,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, createSubscriptionItemRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/items`;
     req.authenticate([{ httpBasic: true }]);
@@ -1030,7 +1030,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateCurrentCycleEndDateRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/periods/latest/end-at`;
     req.authenticate([{ httpBasic: true }]);
@@ -1058,7 +1058,7 @@ export class SubscriptionsController extends BaseController {
       request: [request, updateSubscriptionMinimumPriceRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/minimum_price`;
     req.authenticate([{ httpBasic: true }]);

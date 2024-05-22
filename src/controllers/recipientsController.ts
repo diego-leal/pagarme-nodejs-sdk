@@ -109,7 +109,7 @@ export class RecipientsController extends BaseController {
       request: [request, updateRecipientRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}`;
     req.authenticate([{ httpBasic: true }]);
@@ -136,7 +136,7 @@ export class RecipientsController extends BaseController {
       request: [request, createAnticipationRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/anticipations`;
     req.authenticate([{ httpBasic: true }]);
@@ -233,7 +233,7 @@ export class RecipientsController extends BaseController {
       request: [request, updateRecipientBankAccountRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/default-bank-account`;
     req.authenticate([{ httpBasic: true }]);
@@ -260,7 +260,7 @@ export class RecipientsController extends BaseController {
       request: [request, updateMetadataRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/metadata`;
     req.authenticate([{ httpBasic: true }]);
@@ -369,7 +369,7 @@ export class RecipientsController extends BaseController {
       request: [request, updateAutomaticAnticipationSettingsRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/automatic-anticipation-settings`;
     req.authenticate([{ httpBasic: true }]);
@@ -416,7 +416,7 @@ export class RecipientsController extends BaseController {
       request: [request, updateTransferSettingsRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/transfer-settings`;
     req.authenticate([{ httpBasic: true }]);
@@ -567,7 +567,7 @@ export class RecipientsController extends BaseController {
       request: [request, createTransferRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/recipients/${mapped.recipientId}/transfers`;
     req.authenticate([{ httpBasic: true }]);
@@ -591,7 +591,7 @@ export class RecipientsController extends BaseController {
       request: [request, createRecipientRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getRecipientResponseSchema, requestOptions);

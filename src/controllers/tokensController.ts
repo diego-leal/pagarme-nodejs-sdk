@@ -35,7 +35,7 @@ export class TokensController extends BaseController {
       request: [request, createTokenRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/tokens?appId=${mapped.publicKey}`;
     req.authenticate(false);

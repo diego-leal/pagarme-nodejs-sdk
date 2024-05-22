@@ -49,7 +49,7 @@ export class InvoicesController extends BaseController {
       request: [request, updateMetadataRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/invoices/${mapped.invoiceId}/metadata`;
     req.authenticate([{ httpBasic: true }]);
@@ -90,7 +90,7 @@ export class InvoicesController extends BaseController {
       invoiceId: [invoiceId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/invoices/${mapped.invoiceId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getInvoiceResponseSchema, requestOptions);
@@ -119,7 +119,7 @@ export class InvoicesController extends BaseController {
       request: [request, optional(createInvoiceRequestSchema)],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/subscriptions/${mapped.subscriptionId}/cycles/${mapped.cycleId}/pay`;
     req.authenticate([{ httpBasic: true }]);
@@ -222,7 +222,7 @@ export class InvoicesController extends BaseController {
       request: [request, updateInvoiceStatusRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/invoices/${mapped.invoiceId}/status`;
     req.authenticate([{ httpBasic: true }]);

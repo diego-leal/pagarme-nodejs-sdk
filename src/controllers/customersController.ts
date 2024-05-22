@@ -96,7 +96,7 @@ export class CustomersController extends BaseController {
       request: [request, updateCardRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}`;
     req.authenticate([{ httpBasic: true }]);
@@ -126,7 +126,7 @@ export class CustomersController extends BaseController {
       request: [request, updateAddressRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/addresses/${mapped.addressId}`;
     req.authenticate([{ httpBasic: true }]);
@@ -153,7 +153,7 @@ export class CustomersController extends BaseController {
       tokenId: [tokenId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens/${mapped.tokenId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAccessTokenResponseSchema, requestOptions);
@@ -176,7 +176,7 @@ export class CustomersController extends BaseController {
       request: [request, createCustomerRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCustomerResponseSchema, requestOptions);
@@ -202,7 +202,7 @@ export class CustomersController extends BaseController {
       request: [request, createAddressRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/addresses`;
     req.authenticate([{ httpBasic: true }]);
@@ -268,7 +268,7 @@ export class CustomersController extends BaseController {
       addressId: [addressId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/customers/${mapped.customerId}/addresses/${mapped.addressId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getAddressResponseSchema, requestOptions);
@@ -294,7 +294,7 @@ export class CustomersController extends BaseController {
       request: [request, createCardRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/cards`;
     req.authenticate([{ httpBasic: true }]);
@@ -360,7 +360,7 @@ export class CustomersController extends BaseController {
       request: [request, updateCustomerRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}`;
     req.authenticate([{ httpBasic: true }]);
@@ -387,7 +387,7 @@ export class CustomersController extends BaseController {
       request: [request, createAccessTokenRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/customers/${mapped.customerId}/access-tokens`;
     req.authenticate([{ httpBasic: true }]);
@@ -468,7 +468,7 @@ export class CustomersController extends BaseController {
       cardId: [cardId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}/renew`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCardResponseSchema, requestOptions);
@@ -516,7 +516,7 @@ export class CustomersController extends BaseController {
       request: [request, updateMetadataRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/Customers/${mapped.customerId}/metadata`;
     req.authenticate([{ httpBasic: true }]);
@@ -543,7 +543,7 @@ export class CustomersController extends BaseController {
       cardId: [cardId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/customers/${mapped.customerId}/cards/${mapped.cardId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getCardResponseSchema, requestOptions);

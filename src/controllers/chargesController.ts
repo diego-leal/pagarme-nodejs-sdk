@@ -77,7 +77,7 @@ export class ChargesController extends BaseController {
       request: [request, updateMetadataRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/Charges/${mapped.chargeId}/metadata`;
     req.authenticate([{ httpBasic: true }]);
@@ -105,7 +105,7 @@ export class ChargesController extends BaseController {
       request: [request, updateChargePaymentMethodRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}/payment-method`;
     req.authenticate([{ httpBasic: true }]);
@@ -157,7 +157,7 @@ export class ChargesController extends BaseController {
       request: [request, updateChargeDueDateRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/Charges/${mapped.chargeId}/due-date`;
     req.authenticate([{ httpBasic: true }]);
@@ -235,7 +235,7 @@ export class ChargesController extends BaseController {
       request: [request, optional(createCaptureChargeRequestSchema)],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}/capture`;
     req.authenticate([{ httpBasic: true }]);
@@ -262,7 +262,7 @@ export class ChargesController extends BaseController {
       request: [request, updateChargeCardRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}/card`;
     req.authenticate([{ httpBasic: true }]);
@@ -328,7 +328,7 @@ export class ChargesController extends BaseController {
       chargeId: [chargeId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/charges/${mapped.chargeId}/retry`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
@@ -354,7 +354,7 @@ export class ChargesController extends BaseController {
       request: [request, optional(createCancelChargeRequestSchema)],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}`;
     req.authenticate([{ httpBasic: true }]);
@@ -378,7 +378,7 @@ export class ChargesController extends BaseController {
       request: [request, createChargeRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getChargeResponseSchema, requestOptions);
@@ -402,7 +402,7 @@ export class ChargesController extends BaseController {
       request: [request, optional(createConfirmPaymentRequestSchema)],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/charges/${mapped.chargeId}/confirm-payment`;
     req.authenticate([{ httpBasic: true }]);

@@ -105,7 +105,7 @@ export class OrdersController extends BaseController {
       request: [request, updateOrderItemRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
     req.authenticate([{ httpBasic: true }]);
@@ -127,7 +127,7 @@ export class OrdersController extends BaseController {
       orderId: [orderId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/orders/${mapped.orderId}/items`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderResponseSchema, requestOptions);
@@ -151,7 +151,7 @@ export class OrdersController extends BaseController {
       itemId: [itemId, string()],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.appendTemplatePath`/orders/${mapped.orderId}/items/${mapped.itemId}`;
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderItemResponseSchema, requestOptions);
@@ -175,7 +175,7 @@ export class OrdersController extends BaseController {
       request: [request, updateOrderStatusRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/orders/${mapped.id}/closed`;
     req.authenticate([{ httpBasic: true }]);
@@ -199,7 +199,7 @@ export class OrdersController extends BaseController {
       body: [body, createOrderRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.body);
     req.authenticate([{ httpBasic: true }]);
     return req.callAsJson(getOrderResponseSchema, requestOptions);
@@ -223,7 +223,7 @@ export class OrdersController extends BaseController {
       request: [request, createOrderItemRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/orders/${mapped.orderId}/items`;
     req.authenticate([{ httpBasic: true }]);
@@ -270,7 +270,7 @@ export class OrdersController extends BaseController {
       request: [request, updateMetadataRequestSchema],
       idempotencyKey: [idempotencyKey, optional(string())],
     });
-    req.header('idempotency-key', mapped.idempotencyKey);
+    req.header('idempotency-key', mapped.idempotencyKey ?? undefined);
     req.json(mapped.request);
     req.appendTemplatePath`/Orders/${mapped.orderId}/metadata`;
     req.authenticate([{ httpBasic: true }]);

@@ -16,7 +16,7 @@
     "build": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json",
     "test": "jest --coverage --passWithNoTests",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
-    "prepare": "rm -rf dist & tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json"
+    "prepare": "npm run build"
   },
   "peerDependencies": {},
   "prettier": {
